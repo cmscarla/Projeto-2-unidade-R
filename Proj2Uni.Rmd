@@ -1,0 +1,33 @@
+---
+title: "Projeto"
+output:
+  flexdashboard::flex_dashboard:
+    orientation: columns
+    vertical_layout: fill
+
+---
+
+```{r setup, include=FALSE}
+
+library(flexdashboard)
+library(esquisse)
+library(ggplot2)
+library(tidymodels)
+library(tidyquant)
+library(esquisse)
+
+dados <- read.csv("/Users/user/Desktop/ponteiro")
+esquisser(dados)
+```
+
+Column {data-width=650}
+-----------------------------------------------------------------------
+
+###
+
+```{r}
+({grafico = filter(dados, 'fumantes' == 'input$male') %>%
+ggplot(., 'eas'( x = 'age', y = 'male')) + geom_boxplot() + labs(x = 'Fumantes', y = 'sbp') +
+  theme(axis.text = element_text(angle = 90, hjust = 1))})
+
+```
